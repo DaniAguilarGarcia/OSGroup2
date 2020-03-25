@@ -1,4 +1,9 @@
 # OSGroup2
+
+Group Members and Student IDs:
+Daniela Aguilar (6089603), Akeem Lake(6136179), Nivaldo DeMello (2132181),Michael Gonzalez(1584041).
+
+
 (45%, 125 lines) Implement the file system calls (creat, open, read, write, close, and unlink, documented in syscall.h). You will see the code for halt in UserProcess.java; it is best for you to place your new system calls here too. Note that you are not implementing a file system; rather, you are simply giving user processes the ability to access a file system that we have implemented for you.
 We have provided you the assembly code necessary to invoke system calls from user programs (see start.s; the SYSCALLSTUB macro generates assembly code for each syscall).
 You will need to bullet-proof the Nachos kernel from user program errors; there should be nothing a user program can do to crash the operating system (with the exception of explicitly invoking the halt() syscall). In other words, you must be sure that user programs do not pass bogus arguments to the kernel which causes the kernel to corrupt its internal state or that of other processes. Also, you must take steps to ensure that if a user process does anything illegal -- such as attempting to access unmapped memory or jumping to a bad address -- that the process will be killed cleanly and its resources freed.
