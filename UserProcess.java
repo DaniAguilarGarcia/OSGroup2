@@ -32,8 +32,22 @@ public class UserProcess {
 		for (int i=0; i<numPhysPages; i++)
 		    pageTable[i] = new TranslationEntry(i,i, true,false,false,false);
 		
+		
 		fileDescriptor = new OpenFile[MAX_OPEN_FILES];
 		boolean inStatus = Machine.interrupt().disable();
+		counterLock = new Lock();
+		counterLock.acquire();
+		pid = counter++;
+		counterLock.release();
+		stdin = UserKernel.console.openForReading();
+		stdout = UserKernel.console.openForWriting();
+		fileDescriptor[0] = stdin;
+		fileDescriptor[1] = stdout;
+		Machine.interrupt().restore(inStatus);
+		parent = null;
+		children = new LinkedList<UserProcess>();
+		childrenExitStatus = new HashMap<Integer, Integer>();
+		statusLock = new Lock();
 		
     }
     
@@ -1015,6 +1029,8 @@ public class UserProcess {
     protected LinkedList<UserProcess> children;
     protected HashMap<Integer,Integer> childrenExitStatus;
     protected Lock statusLock;
+    protected Lock counterLock;   
+    protected static int counter = 0;
     protected UThread thread;
     protected OpenFile stdin;
     protected OpenFile stdout;
