@@ -1,7 +1,7 @@
 # OSGroup2
 
 Group Members and Student IDs:
-Daniela Aguilar (6089603), Akeem Lake(6136179), Nivaldo DeMello (2132181),Michael Gonzalez(1584041).
+Daniela Aguilar, Akeem Lake, Nivaldo DeMello,Michael Gonzalez.
 
 
 (45%, 125 lines) Implement the file system calls (creat, open, read, write, close, and unlink, documented in syscall.h). You will see the code for halt in UserProcess.java; it is best for you to place your new system calls here too. Note that you are not implementing a file system; rather, you are simply giving user processes the ability to access a file system that we have implemented for you.
